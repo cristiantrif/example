@@ -1,0 +1,26 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="dummyCompanyName\dummyApplicationName\Domain\Entities\StockLocation" table="stock_locations"
+            repository-class="dummyCompanyName\dummyApplicationName\Infrastructure\Persistence\Repositories\DoctrineStockLocationRepository">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name" type="string" column="location_name" />
+        <field name="address" type="text" column="location_address" />
+        <field name="city" type="string" column="location_city" />
+        <field name="zipcode" type="string" column="location_zipcode" />
+        <field name="country" type="integer" column="location_country" />
+        <field name="allowedOnline" type="boolean" column="online_allowed" />
+        <one-to-many
+                field="stockPlaces"
+                target-entity="dummyCompanyName\dummyApplicationName\Domain\Entities\StockPlace"
+                mapped-by="stockLocation" />
+
+    </entity>
+
+</doctrine-mapping>
